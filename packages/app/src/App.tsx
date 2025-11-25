@@ -39,7 +39,7 @@ import { NotificationsPage } from '@backstage/plugin-notifications';
 import { SignalsDisplay } from '@backstage/plugin-signals';
 
 import { githubAuthApiRef } from '@backstage/core-plugin-api';
-
+import { microsoftAuthApiRef } from '@backstage/core-plugin-api';
 
 const app = createApp({
   apis,
@@ -71,6 +71,12 @@ const app = createApp({
             title: 'GitHub',
             message: 'Sign in using GitHub',
             apiRef: githubAuthApiRef,
+          },
+          {
+            id: 'microsoft-auth-provider',
+            title: 'Microsoft',
+            message: 'Sign in using EntraID',
+            apiRef: microsoftAuthApiRef,
           },
         ]}
       />

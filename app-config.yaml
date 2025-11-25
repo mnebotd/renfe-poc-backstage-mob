@@ -79,6 +79,16 @@ auth:
           resolvers:
             # See https://backstage.io/docs/auth/github/provider#resolvers for more resolvers
             - resolver: usernameMatchingUserEntityName
+    microsoft:
+      development:
+        clientId: cec57b01-aedb-47f1-9178-731a9136adaf
+        clientSecret: X3A8Q~UPrhBs1_yyfhrTFHRpq7K7JFe2UlmLOaVv
+        tenantId: ab2581f8-14b1-418e-b568-2948be9f3e24
+        domainHint: ab2581f8-14b1-418e-b568-2948be9f3e24
+        signIn:
+          resolvers:
+            # See https://backstage.io/docs/auth/microsoft/provider#resolvers for more resolvers
+            - resolver: userIdMatchingUserEntityAnnotation
 
 scaffolder:
   # see https://backstage.io/docs/features/software-templates/configuration for software template options
