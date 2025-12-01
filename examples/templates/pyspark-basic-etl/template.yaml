@@ -1,0 +1,107 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: pyspark-etl-archetype
+  title: PySpark ETL Project (Renfe Standard)
+  description: Genera un proyecto PySpark siguiendo la arquitectura ETL recomendada (ingest/transform/load + configs/dependencies/schemas/utils/tests).
+  tags:
+    - python
+    - pyspark
+    - etl
+    - data-engineering
+
+spec:
+  owner: user:guest
+  type: service
+
+  #############################################
+  #  PARAMETERS visibles en el formulario GUI #
+  #############################################
+  parameters:
+    - title: Información general del proyecto
+      required:
+        - appName
+        - description
+      properties:
+        appName:
+          title: Project Name
+          type: string
+          description: Unique ETL project name
+          ui:autofocus: true
+        description:
+          title: Description
+          type: string
+          description: Short description of the ETL job
+
+    - title: Configuración del repositorio
+      required:
+        - visibility
+      properties:
+        visibility:
+          title: Visibility
+          type: string
+          enum: [public, private]
+          default: private
+
+    - title: Carpetas opcionales
+      properties:
+        includeUtils:
+          type: boolean
+          title: Incluir carpeta utils/
+          default: true
+        includeSchemas:
+          type: boolean
+          title: Incluir carpeta schemas/
+          default: true
+        includeTests:
+          type: boolean
+          title: Incluir carpeta tests/
+          default: true
+
+  #############################################
+  #                  STEPS                    #
+  #############################################
+  steps:
+
+    - id: fetch-base
+      name: Generando estructura base PySpark ETL
+      action: fetch:template
+      input:
+        url: ./skeleton
+        values:
+          appName: ${{ parameters.appName }}
+          description: ${{ parameters.description }}
+          owner: user:${{ user.entity.metadata.name }}
+          visibility: ${{ parameters.visibility }}
+
+          # Flags opcionales
+          includeUtils: ${{ parameters.includeUtils }}
+          includeSchemas: ${{ parameters.includeSchemas }}
+          includeTests: ${{ parameters.includeTests }}
+
+    - id: publish
+      name: Publicando repositorio en GitHub
+      action: publish:github
+      input:
+        description: PySpark ETL Project - ${{ parameters.appName }}
+        repoUrl: github.com?owner=davyyelor&repo=${{ parameters.appName }}
+        defaultBranch: "main"
+        repoVisibility: ${{ parameters.visibility }}
+
+    - id: register
+      name: Registrando componente en Backstage
+      action: catalog:register
+      input:
+        repoContentsUrl: ${{ steps['publish'].output.repoContentsUrl }}
+        catalogInfoPath: /catalog-info.yaml
+
+  #############################################
+  #                  OUTPUTS                  #
+  #############################################
+  output:
+    links:
+      - title: Repositorio creado
+        url: ${{ steps['publish'].output.remoteUrl }}
+      - title: Componente en Backstage
+        icon: catalog
+        entityRef: ${{ steps['register'].output.entityRef }}

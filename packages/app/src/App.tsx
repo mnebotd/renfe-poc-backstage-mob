@@ -40,6 +40,7 @@ import { SignalsDisplay } from '@backstage/plugin-signals';
 
 import { githubAuthApiRef } from '@backstage/core-plugin-api';
 import { microsoftAuthApiRef } from '@backstage/core-plugin-api';
+import { gitlabAuthApiRef } from '@backstage/core-plugin-api';
 
 const app = createApp({
   apis,
@@ -77,6 +78,12 @@ const app = createApp({
             title: 'Microsoft',
             message: 'Sign in using EntraID',
             apiRef: microsoftAuthApiRef,
+          },
+                    {
+            id: 'gitlab-auth-provider',
+            title: 'GitLab',
+            message: 'Sign in using GitLab',
+            apiRef: githubAuthApiRef,
           },
         ]}
       />

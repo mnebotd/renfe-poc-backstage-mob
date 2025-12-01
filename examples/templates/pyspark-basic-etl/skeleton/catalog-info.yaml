@@ -1,0 +1,19 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: ${{ values.appName }}
+  description: "Servicio generado con el template Spring Boot Clean Architecture"
+  tags:
+    - java
+    - springboot
+    - clean-architecture
+spec:
+  type: service
+  lifecycle: production
+  owner: ${{ values.owner }}
+
+  # URL del repositorio generado automáticamente
+  links:
+    - url: https://github.com/davyyelor/${{ values.appName }}
+      title: Repositorio GitHub
+      icon: github

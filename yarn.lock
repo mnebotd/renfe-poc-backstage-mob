@@ -2632,6 +2632,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@backstage/plugin-auth-backend-module-gitlab-provider@npm:^0.3.9":
+  version: 0.3.9
+  resolution: "@backstage/plugin-auth-backend-module-gitlab-provider@npm:0.3.9"
+  dependencies:
+    "@backstage/backend-plugin-api": "npm:^1.5.0"
+    "@backstage/plugin-auth-node": "npm:^0.6.9"
+    express: "npm:^4.18.2"
+    passport: "npm:^0.7.0"
+    passport-gitlab2: "npm:^5.0.0"
+    zod: "npm:^3.22.4"
+  checksum: 10c0/6547514048e0f71e973996e259e4fc43e3c00b2443cec613a273d03ee32f2993b461f7fa694cf997f19fc02b9e6b7f94dcc0f02604feeda246e8f38db3d0a8c3
+  languageName: node
+  linkType: hard
+
 "@backstage/plugin-auth-backend-module-guest-provider@npm:^0.2.14":
   version: 0.2.14
   resolution: "@backstage/plugin-auth-backend-module-guest-provider@npm:0.2.14"
@@ -2739,6 +2753,26 @@ __metadata:
     "@backstage/integration": "npm:^1.18.2"
     cross-fetch: "npm:^4.0.0"
   checksum: 10c0/65b06de8aeee8f2ead2117a6b66d047c21fa8e5e689eeb03e3795631781e8f4023996d5eb546744d9086008822fb38879341987ed041788c34193e6309c320dc
+  languageName: node
+  linkType: hard
+
+"@backstage/plugin-catalog-backend-module-gitlab@npm:^0.7.5":
+  version: 0.7.5
+  resolution: "@backstage/plugin-catalog-backend-module-gitlab@npm:0.7.5"
+  dependencies:
+    "@backstage/backend-defaults": "npm:^0.13.1"
+    "@backstage/backend-plugin-api": "npm:^1.5.0"
+    "@backstage/catalog-model": "npm:^1.7.6"
+    "@backstage/config": "npm:^1.3.6"
+    "@backstage/integration": "npm:^1.18.2"
+    "@backstage/plugin-catalog-common": "npm:^1.1.7"
+    "@backstage/plugin-catalog-node": "npm:^1.20.0"
+    "@backstage/plugin-events-node": "npm:^0.4.17"
+    "@gitbeaker/rest": "npm:^40.0.3"
+    lodash: "npm:^4.17.21"
+    node-fetch: "npm:^2.7.0"
+    uuid: "npm:^11.0.0"
+  checksum: 10c0/ad1527f70d5a3151f483c8afcb8696b89399d81ba8fe6c5aedbbceb5f30e24b65b5b71582de7f90ee4cb8b43e13cd4b8193fa2602e29457e23a4aee5bd85f12b
   languageName: node
   linkType: hard
 
@@ -5061,6 +5095,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@gitbeaker/core@npm:^40.6.0":
+  version: 40.6.0
+  resolution: "@gitbeaker/core@npm:40.6.0"
+  dependencies:
+    "@gitbeaker/requester-utils": "npm:^40.6.0"
+    qs: "npm:^6.12.2"
+    xcase: "npm:^2.0.1"
+  checksum: 10c0/832e13ad8390b36d52eef9a103d18a9379c91d7616920fd17887f98c67bc93602cbc1b02c151a649c8a665e197dcb5bf243daabc9020e5d6b2324b827722694c
+  languageName: node
+  linkType: hard
+
 "@gitbeaker/core@npm:^41.3.0":
   version: 41.3.0
   resolution: "@gitbeaker/core@npm:41.3.0"
@@ -5069,6 +5114,18 @@ __metadata:
     qs: "npm:^6.12.2"
     xcase: "npm:^2.0.1"
   checksum: 10c0/80181536c0d2edfa86c81d436d3f571913c59e15f37008008bfb15dd3d9e11ce20d498a4b5216f447eb03a57e55f8bd00bbc320a933d70e50115c9942dce0477
+  languageName: node
+  linkType: hard
+
+"@gitbeaker/requester-utils@npm:^40.6.0":
+  version: 40.6.0
+  resolution: "@gitbeaker/requester-utils@npm:40.6.0"
+  dependencies:
+    picomatch-browser: "npm:^2.2.6"
+    qs: "npm:^6.12.2"
+    rate-limiter-flexible: "npm:^4.0.1"
+    xcase: "npm:^2.0.1"
+  checksum: 10c0/b3c2746062b61ea2612742c2e940cbe9afeed6bee40d06085485dbb238cfb923953db42ec2a61caa5dcc3bccf08d3b540bcf962de2d2c67b5d31a1a93aa19133
   languageName: node
   linkType: hard
 
@@ -5081,6 +5138,16 @@ __metadata:
     rate-limiter-flexible: "npm:^4.0.1"
     xcase: "npm:^2.0.1"
   checksum: 10c0/12fec1a67fbe3e18d1a4af1cd8b915c0b07cd73c9ad9072e4b2210d099486ada393e39ab31148256feb56ed73f55c12c5ed97d54d5ffb181e46ac8d70110dba0
+  languageName: node
+  linkType: hard
+
+"@gitbeaker/rest@npm:^40.0.3":
+  version: 40.6.0
+  resolution: "@gitbeaker/rest@npm:40.6.0"
+  dependencies:
+    "@gitbeaker/core": "npm:^40.6.0"
+    "@gitbeaker/requester-utils": "npm:^40.6.0"
+  checksum: 10c0/d14ff9b712c829cf3b3198d82e4ad8c9af5c208ba1d31f9be86465f599e02f807ce166972c1473ca0ed792e837a2f6b000892dbdd7d8cbbd32067367f611bfdc
   languageName: node
   linkType: hard
 
@@ -14785,10 +14852,12 @@ __metadata:
     "@backstage/plugin-app-backend": "npm:^0.5.8"
     "@backstage/plugin-auth-backend": "npm:^0.25.6"
     "@backstage/plugin-auth-backend-module-github-provider": "npm:^0.3.9"
+    "@backstage/plugin-auth-backend-module-gitlab-provider": "npm:^0.3.9"
     "@backstage/plugin-auth-backend-module-guest-provider": "npm:^0.2.14"
     "@backstage/plugin-auth-backend-module-microsoft-provider": "npm:^0.3.9"
     "@backstage/plugin-auth-node": "npm:^0.6.9"
     "@backstage/plugin-catalog-backend": "npm:^3.2.0"
+    "@backstage/plugin-catalog-backend-module-gitlab": "npm:^0.7.5"
     "@backstage/plugin-catalog-backend-module-logs": "npm:^0.1.16"
     "@backstage/plugin-catalog-backend-module-scaffolder-entity-model": "npm:^0.2.14"
     "@backstage/plugin-kubernetes-backend": "npm:^0.20.4"
@@ -26088,6 +26157,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"passport-gitlab2@npm:^5.0.0":
+  version: 5.0.0
+  resolution: "passport-gitlab2@npm:5.0.0"
+  dependencies:
+    passport-oauth2: "npm:^1.4.0"
+  checksum: 10c0/703b1c26e7cc085fb089b6d00111765b9ca5695c1cf73c1d2d352996ae8ea70e737c4e759f6d43814053633dabf5fe299498dca0c26ecc79f7a32c9cccbd8257
+  languageName: node
+  linkType: hard
+
 "passport-microsoft@npm:^1.0.0":
   version: 1.1.0
   resolution: "passport-microsoft@npm:1.1.0"
@@ -26097,7 +26175,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"passport-oauth2@npm:1.8.0, passport-oauth2@npm:1.x.x, passport-oauth2@npm:^1.7.0":
+"passport-oauth2@npm:1.8.0, passport-oauth2@npm:1.x.x, passport-oauth2@npm:^1.4.0, passport-oauth2@npm:^1.7.0":
   version: 1.8.0
   resolution: "passport-oauth2@npm:1.8.0"
   dependencies:

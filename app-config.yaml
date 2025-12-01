@@ -42,6 +42,11 @@ integrations:
     # - host: ghe.example.net
     #   apiBaseUrl: https://ghe.example.net/api/v3
     #   token: ${GHE_TOKEN}
+    - host: gitlab.com
+      baseUrl: http://gitlab.com
+      apiBaseUrl: http://gitlab.com/api/v4
+      # If the repo is private, add a token as well
+      token: <gitlab-access-token>
 
 proxy:
   ### Example for how to add a proxy endpoint for the frontend.
@@ -84,6 +89,20 @@ auth:
           resolvers:
             # See https://backstage.io/docs/auth/github/provider#resolvers for more resolvers
             - resolver: usernameMatchingUserEntityName
+    gitlab:
+      development:
+        clientId: 1d4031cae7346ccab8035f1da4e079acf6a8e95c4662ad9736fbace0f121c5bd
+        clientSecret: gloas-ac5142541b4a41575ac24776cac0b4003967c40427a7a742d51c7eddc50b3330
+        ## uncomment if using self-hosted GitLab
+        # audience: https://gitlab.company.com
+        ## uncomment if using a custom redirect URI
+        # callbackUrl: https://${BASE_URL}/api/auth/gitlab/handler/frame
+        ## uncomment to set lifespan of user session
+        # sessionDuration: { hours: 24 } # supports `ms` library format (e.g. '24h', '2 days'), ISO duration, "human duration" as used in code
+        signIn:
+          resolvers:
+            # See https://backstage.io/docs/auth/gitlab/provider#resolvers for more resolvers
+            - resolver: usernameMatchingUserEntityName
     microsoft:
       development:
         clientId: cec57b01-aedb-47f1-9178-731a9136adaf
@@ -111,7 +130,7 @@ catalog:
 
     # Local example template
     - type: file
-      target: ../../examples/templates/node-basic-app/template.yaml
+      target: ../../examples/templates/pyspark-basic-etl/template.yaml
       rules:
         - allow: [Template]
 
