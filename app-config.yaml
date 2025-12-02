@@ -29,7 +29,13 @@ backend:
   # The production database configuration is stored in app-config.production.yaml
   database:
     client: better-sqlite3
-    connection: ':memory:'
+    connection:
+      filename: ./data/backstage.sqlite
+  cache:
+    store: memory
+    memory:
+      ttl: 300000 
+    
   # workingDirectory: /tmp # Use this to configure a working directory for the scaffolder, defaults to the OS temp-dir
 
 integrations:
@@ -46,7 +52,7 @@ integrations:
       baseUrl: http://gitlab.com
       apiBaseUrl: http://gitlab.com/api/v4
       # If the repo is private, add a token as well
-      token: <gitlab-access-token>
+      token: glpat-y5liTFjAM7Xu8VIaN_bFxW86MQp1OmoxZmU4Cw.01.120a996a0
 
 proxy:
   ### Example for how to add a proxy endpoint for the frontend.
@@ -121,26 +127,30 @@ catalog:
   import:
     entityFilename: catalog-info.yaml
     pullRequestBranchName: backstage-integration
+
   rules:
-    - allow: [Component, System, API, Resource, Location]
+    - allow: [Component, System, API, Resource, Location, Template]
+
   locations:
-    # Local example data, file locations are relative to the backend process, typically `packages/backend`
+    # Entities
     - type: file
       target: ../../examples/entities.yaml
+      rules:
+        - allow: [Component, System, API, Resource, Location]
 
-    # Local example template
+    # PySpark template
     - type: file
       target: ../../examples/templates/pyspark-basic-etl/template.yaml
       rules:
         - allow: [Template]
 
-    # Local example template
+    # Spring Boot template
     - type: file
       target: ../../examples/templates/spring-boot-basic/template.yaml
       rules:
         - allow: [Template]
 
-    # Local example organizational data
+    # Organization
     - type: file
       target: ../../examples/org.yaml
       rules:
@@ -155,6 +165,7 @@ catalog:
     #   target: https://github.com/backstage/backstage/blob/master/packages/catalog-model/examples/acme-corp.yaml
     #   rules:
     #     - allow: [User, Group]
+
 
 kubernetes:
   # see https://backstage.io/docs/features/kubernetes/configuration for kubernetes configuration options
