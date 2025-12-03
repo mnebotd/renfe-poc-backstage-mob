@@ -1,41 +1,82 @@
----
-# https://backstage.io/docs/features/software-catalog/descriptor-format#kind-system
+# ==========================================
+# Sistema de Analítica y Reporting
+# ==========================================
 apiVersion: backstage.io/v1alpha1
 kind: System
 metadata:
-  name: examples
+  name: sistema-analitica-reporting
+  description: Sistema encargado del análisis de datos, generación de informes y seguimiento de KPIs operativos.
+  tags:
+    - analytics
+    - reporting
 spec:
-  owner: guests
----
-# https://backstage.io/docs/features/software-catalog/descriptor-format#kind-component
-apiVersion: backstage.io/v1alpha1
-kind: Component
-metadata:
-  name: example-website
-spec:
-  type: website
-  lifecycle: experimental
-  owner: guests
-  system: examples
-  providesApis: [example-grpc-api]
----
-# https://backstage.io/docs/features/software-catalog/descriptor-format#kind-api
-apiVersion: backstage.io/v1alpha1
-kind: API
-metadata:
-  name: example-grpc-api
-spec:
-  type: grpc
-  lifecycle: experimental
-  owner: guests
-  system: examples
-  definition: |
-    syntax = "proto3";
+  type: system
+  owner: group:team-analytics
 
-    service Exampler {
-      rpc Example (ExampleMessage) returns (ExampleMessage) {};
-    }
 
-    message ExampleMessage {
-      string example = 1;
-    };
+---
+# ==========================================
+# Sistema de Identidad y Gestión de Accesos
+# ==========================================
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: sistema-identidad-accesos
+  description: Sistema responsable de la autenticación, autorización, perfiles de usuario y notificaciones asociadas.
+  tags:
+    - identity
+    - access
+    - auth
+spec:
+  owner: group:team-identidad
+
+
+---
+# ==========================================
+# Sistema de Ticketing y Pagos
+# ==========================================
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: sistema-ticketing
+  description: Sistema para la compra de billetes, procesamiento de pagos, fijación de precios y gestión de reservas asociadas.
+  tags:
+    - ticketing
+    - pricing
+    - payments
+spec:
+  owner: group:team-ticketing
+
+
+---
+# ==========================================
+# Sistema de Movilidad y Rutas
+# ==========================================
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: sistema-movilidad-rutas
+  description: Sistema encargado de gestionar rutas, paradas, planificación de viajes y geolocalización de infraestructuras.
+  tags:
+    - mobility
+    - routes
+    - geolocation
+spec:
+  owner: group:team-movilidad
+
+
+---
+# ==========================================
+# Sistema de Gestión de Flota
+# ==========================================
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: sistema-gestion-flota
+  description: Sistema encargado del control de flota, mantenimiento, posición en tiempo real e incidencias asociadas.
+  tags:
+    - fleet
+    - realtime
+    - incidents
+spec:
+  owner: group:team-flota

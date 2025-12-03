@@ -1,32 +1,140 @@
----
-# https://backstage.io/docs/features/software-catalog/descriptor-format#kind-user
-apiVersion: backstage.io/v1alpha1
-kind: User
-metadata:
-  name: davyyelor
-spec:
-  memberOf: [guests]
----
-# https://backstage.io/docs/features/software-catalog/descriptor-format#kind-group
+###########################################################
+# Grupos generales
+###########################################################
 apiVersion: backstage.io/v1alpha1
 kind: Group
 metadata:
-  name: guests
+  name: Developers
+  description: Equipo general de desarrolladores
 spec:
   type: team
   children: []
 
 ---
-# https://backstage.io/docs/features/software-catalog/descriptor-format#kind-group
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: Infrastructure
+  description: Equipo encargado de infraestructura y plataforma
+spec:
+  type: team
+  children: []
+
+###########################################################
+# Grupos por System
+###########################################################
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: team-analitica
+  description: Equipo responsable de analítica y reporting
+spec:
+  type: team
+  profile:
+    displayName: Equipo de Analítica y Reporting
+  children: []
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: team-identidad
+  description: Equipo responsable de autenticación, autorización e identidad
+spec:
+  type: team
+  profile:
+    displayName: Equipo de Identidad y Gestión de Accesos
+  children: []
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: team-ticketing
+  description: Equipo encargado del ticketing, pricing y pagos
+spec:
+  type: team
+  profile:
+    displayName: Equipo de Ticketing
+  children: []
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: team-movilidad
+  description: Equipo encargado de rutas, movilidad, geolocalización y planificación
+spec:
+  type: team
+  profile:
+    displayName: Equipo de Movilidad y Rutas
+  children: []
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: team-flota
+  description: Equipo de gestión de flota, mantenimiento, incidencias y posición en tiempo real
+spec:
+  type: team
+  profile:
+    displayName: Equipo de Gestión de Flota
+  children: []
+
+###########################################################
+# Usuarios actuales
+###########################################################
+---
 apiVersion: backstage.io/v1alpha1
 kind: User
 metadata:
-  name: davidelorzag
+  name: acasares
+spec:
+  profile:
+    displayName: Álvaro Casares
+    email: acasares@renfe.com
+  memberOf:
+    - Developers
+    - Infrastructure
+    - team-ticketing     
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: davidelorzag              
   annotations:
     graph.microsoft.com/user-id: 37614d18-4ac0-4fbd-a96c-f773a8778c5c
+    github.com/user-login: davyyelor     
 spec:
   profile:
     displayName: David Elorza
     email: davidelorzag@gmail.com
   memberOf:
-    - guests
+    - Developers
+    - team-identidad
+    - team-movilidad
+  targets:
+    - user:davyyelor
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: delorzagabilondo              
+  annotations:
+    graph.microsoft.com/user-id: 37614d18-4ac0-4fbd-a96c-f773a8778c5c
+    github.com/user-login: delorzagabilondo     
+spec:
+  profile:
+    displayName: David Elorza
+    email: delorzagabilondo@deloitte.es
+  memberOf:
+    - Developers
+    - team-identidad
+    - team-movilidad
+  targets:
+    - user:delorzagabilondo
