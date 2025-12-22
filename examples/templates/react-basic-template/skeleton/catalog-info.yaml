@@ -1,0 +1,18 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: ${{ values.appName }}
+  description: ${{ values.description }}
+  tags:
+    - react
+    - frontend
+    - javascript
+spec:
+  type: website
+  lifecycle: production
+  owner: ${{ values.owner }}
+
+  links:
+    - url: https://github.com/davyyelor/${{ values.appName }}
+      title: Repositorio GitHub
+      icon: github

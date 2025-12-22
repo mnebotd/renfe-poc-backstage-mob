@@ -20,6 +20,12 @@
     </properties>
 
     <dependencies>
+        {% if parameters.includeLoggerr %}
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-logging</artifactId>
+        </dependency>
+        {% endif %}
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>

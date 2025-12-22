@@ -5,6 +5,7 @@ import ExtensionIcon from '@material-ui/icons/Extension';
 import LibraryBooks from '@material-ui/icons/LibraryBooks';
 import CreateComponentIcon from '@material-ui/icons/AddCircleOutline';
 import MyCustomLogoFull from './renfe-logo-png_seeklogo-117567.png';
+import TrackChangesIcon from '@material-ui/icons/TrackChanges'; 
 import {
   Settings as SidebarSettings,
   UserSettingsSignInAvatar,
@@ -64,12 +65,16 @@ export const Root = ({ children }: PropsWithChildren<{}>) => (
   <SidebarPage>
     <Sidebar>
       <SidebarLogo />
+
+      {/* Search */}
       <SidebarGroup label="Search" icon={<SearchIcon />} to="/search">
         <SidebarSearchModal />
       </SidebarGroup>
+
       <SidebarDivider />
+
+      {/* MENU PRINCIPAL */}
       <SidebarGroup label="Menu" icon={<MenuIcon />}>
-        {/* Global nav, not org-specific */}
         <SidebarItem icon={HomeIcon} to="catalog" text="Home" />
         <MyGroupsSidebarItem
           singularTitle="My Group"
@@ -79,16 +84,31 @@ export const Root = ({ children }: PropsWithChildren<{}>) => (
         <SidebarItem icon={ExtensionIcon} to="api-docs" text="APIs" />
         <SidebarItem icon={LibraryBooks} to="docs" text="Docs" />
         <SidebarItem icon={CreateComponentIcon} to="create" text="Create..." />
-        {/* End global nav */}
         <SidebarDivider />
-        <SidebarScrollWrapper>
-          {/* Items in this group will be scrollable if they run out of space */}
-        </SidebarScrollWrapper>
+        <SidebarScrollWrapper />
       </SidebarGroup>
+
+      <SidebarDivider />
+
+      {/* ⭐ NUEVO GRUPO: TECH RADAR */}
+      <SidebarGroup label="Tech Radar" icon={<TrackChangesIcon />}>
+        <SidebarItem
+          icon={TrackChangesIcon}
+          to="tech-radar"
+          text="Tech Radar"
+        />
+      </SidebarGroup>
+
+      <SidebarDivider />
+
       <SidebarSpace />
-      <SidebarDivider />
+
+      {/* Notifications */}
       <NotificationsSidebarItem />
+
       <SidebarDivider />
+
+      {/* Settings */}
       <SidebarGroup
         label="Settings"
         icon={<UserSettingsSignInAvatar />}
@@ -97,6 +117,7 @@ export const Root = ({ children }: PropsWithChildren<{}>) => (
         <SidebarSettings />
       </SidebarGroup>
     </Sidebar>
+
     {children}
   </SidebarPage>
 );

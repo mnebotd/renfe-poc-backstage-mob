@@ -42,6 +42,8 @@ import { githubAuthApiRef } from '@backstage/core-plugin-api';
 import { microsoftAuthApiRef } from '@backstage/core-plugin-api';
 import { gitlabAuthApiRef } from '@backstage/core-plugin-api';
 
+import { TechRadarPage } from '@backstage-community/plugin-tech-radar';
+
 const app = createApp({
   apis,
   bindRoutes({ bind }) {
@@ -93,6 +95,10 @@ const app = createApp({
 
 const routes = (
   <FlatRoutes>
+    <Route
+      path="/tech-radar"
+      element={<TechRadarPage />}
+    />
     <Route path="/" element={<Navigate to="catalog" />} />
     <Route path="/catalog" element={<CatalogIndexPage />} />
     <Route

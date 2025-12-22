@@ -20,6 +20,7 @@ spec:
   type: team
   children: []
 
+
 ###########################################################
 # Grupos por System
 ###########################################################
@@ -87,54 +88,28 @@ spec:
 ###########################################################
 # Usuarios actuales
 ###########################################################
----
-apiVersion: backstage.io/v1alpha1
-kind: User
-metadata:
-  name: acasares
-spec:
-  profile:
-    displayName: Álvaro Casares
-    email: acasares@renfe.com
-  memberOf:
-    - Developers
-    - Infrastructure
-    - team-ticketing     
 
 ---
+---
+# https://backstage.io/docs/features/software-catalog/descriptor-format#kind-user
 apiVersion: backstage.io/v1alpha1
 kind: User
 metadata:
-  name: davidelorzag              
+  name: davyyelor
+spec:
+  memberOf: [Developers]
+---
+# https://backstage.io/docs/features/software-catalog/descriptor-format#kind-group
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: davidelorzag
   annotations:
     graph.microsoft.com/user-id: 37614d18-4ac0-4fbd-a96c-f773a8778c5c
-    github.com/user-login: davyyelor     
 spec:
   profile:
     displayName: David Elorza
     email: davidelorzag@gmail.com
   memberOf:
     - Developers
-    - team-identidad
-    - team-movilidad
-  targets:
-    - user:davyyelor
-
----
-apiVersion: backstage.io/v1alpha1
-kind: User
-metadata:
-  name: delorzagabilondo              
-  annotations:
-    graph.microsoft.com/user-id: 37614d18-4ac0-4fbd-a96c-f773a8778c5c
-    github.com/user-login: delorzagabilondo     
-spec:
-  profile:
-    displayName: David Elorza
-    email: delorzagabilondo@deloitte.es
-  memberOf:
-    - Developers
-    - team-identidad
-    - team-movilidad
-  targets:
-    - user:delorzagabilondo
+    - Infrastructure

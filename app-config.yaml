@@ -74,6 +74,8 @@ techdocs:
     local:
       publishDirectory: './static/docs'
 
+techRadar:
+  url: https://github.com/backstage/community-plugins/blob/main/workspaces/tech-radar/plugins/tech-radar-common/src/sampleTechRadarResponse.json
 
 auth:
   # see https://backstage.io/docs/auth/ to learn about auth providers
@@ -144,6 +146,12 @@ catalog:
     # Spring Boot template
     - type: file
       target: ../../examples/templates/spring-boot-basic/template.yaml
+      rules:
+        - allow: [Template]
+
+    # Spring Boot template
+    - type: file
+      target: ../../examples/templates/react-basic-template/template.yaml
       rules:
         - allow: [Template]
 

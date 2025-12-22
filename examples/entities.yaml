@@ -1,34 +1,31 @@
 # ==========================================
-# Sistema de Analítica y Reporting
+# Plataforma OpenShift
 # ==========================================
 apiVersion: backstage.io/v1alpha1
 kind: System
 metadata:
-  name: sistema-analitica-reporting
-  description: Sistema encargado del análisis de datos, generación de informes y seguimiento de KPIs operativos.
+  name: openshift
+  description: Aplicaciones, servicios y componentes desplegados en la plataforma OpenShift.
   tags:
-    - analytics
-    - reporting
+    - openshift
 spec:
   type: system
-  owner: group:team-analytics
+  owner: group:infrastructure
 
 
 ---
 # ==========================================
-# Sistema de Identidad y Gestión de Accesos
+# Plataforma WebSphere
 # ==========================================
 apiVersion: backstage.io/v1alpha1
 kind: System
 metadata:
-  name: sistema-identidad-accesos
-  description: Sistema responsable de la autenticación, autorización, perfiles de usuario y notificaciones asociadas.
+  name: websphere
+  description: Aplicaciones, servicios y componentes desplegados en la plataforma WebSphere.
   tags:
-    - identity
-    - access
-    - auth
+    - websphere
 spec:
-  owner: group:team-identidad
+  owner: group:developers
 
 
 ---
@@ -47,6 +44,44 @@ metadata:
 spec:
   owner: group:team-ticketing
 
+---
+# ==========================================
+# Base de datos PostgreSQL en OpenShift
+# ==========================================
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: postgres
+  description: Base de datos PostgreSQL desplegada en OpenShift.
+  tags:
+    - postgresql
+    - database
+    - openshift
+spec:
+  type: database
+  owner: group:infrastructure
+  system: openshift
+  lifecycle: production
+
+---
+# ==========================================
+# Cola de mensajes AWS SQS para procesamiento de pagos
+# ==========================================
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: aws-sqs-payments
+  description: Cola SQS utilizada para procesar eventos y transacciones del sistema de ticketing y pagos.
+  tags:
+    - aws
+    - sqs
+    - queue
+    - messaging
+spec:
+  type: queue
+  owner: group:team-ticketing
+  system: sistema-ticketing
+  lifecycle: production
 
 ---
 # ==========================================

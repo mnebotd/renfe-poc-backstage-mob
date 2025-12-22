@@ -1,0 +1,52 @@
+.gradle
+**/build/
+!src/**/build/
+
+# MkDocs
+.cache
+_site
+
+# Ignore Gradle GUI config
+gradle-app.setting
+
+# Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
+!gradle-wrapper.jar
+
+# Avoid ignore Gradle wrappper properties
+!gradle-wrapper.properties
+
+# Cache of project
+.gradletasknamecache
+
+# Ignore Gradle build output directory
+build
+
+# IDEA
+.idea
+.shelf
+
+# macOS
+.DS_Store
+
+# Android
+local.properties
+
+# Eclipse
+.settings/
+.classpath
+.project
+.metadata
+.loadpath
+.recommenders
+bin/
+tmp/
+
+# Visual Studio Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+.history/
+

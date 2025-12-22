@@ -1,18 +1,17 @@
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
-  name: springboot-clean-arq
-  title: Spring Boot Clean Architecture
-  description: Genera un proyecto Spring Boot con arquitectura por capas estándar.
+  name: react-basic-template
+  title: React Basic App
+  description: Genera un proyecto base en React con estructura estándar y opcional.
   tags:
-    - java
-    - spring
-    - springboot
-    - maven
+    - react
+    - javascript
+    - frontend
 
 spec:
   owner: user:guest
-  type: service
+  type: website
 
   #############################################
   #  PARAMETERS visibles en el formulario GUI #
@@ -30,13 +29,14 @@ spec:
           ui:autofocus: true
           ui:options:
             rows: 5
+
         description:
           title: Description
           type: string
           description: Short description of the component
           ui:options:
-            rows: 5
-    
+            rows: 3
+
     - title: Configuración del repositorio
       required:
         - visibility
@@ -44,34 +44,33 @@ spec:
         visibility:
           title: Visibility
           type: string
-          description: Define si el repo será público o privado
+          description: Define si el repositorio será público o privado
           enum:
             - public
             - private
           default: private
 
-
     - title: Configuración opcional
       properties:
-        includeConfig:
+        includeComponents:
           type: boolean
-          title: Incluir carpeta config/
+          title: Incluir carpeta components/
           default: true
-        includeLogger:
+        includeHooks:
           type: boolean
-          title: Incluir carpeta logger/
+          title: Incluir carpeta hooks/
+          default: true
+        includeServices:
+          type: boolean
+          title: Incluir carpeta services/
           default: false
         includeUtils:
           type: boolean
-          title: Incluir carpeta util/
+          title: Incluir carpeta utils/
           default: false
-        includeMapper:
+        includeStyles:
           type: boolean
-          title: Incluir carpeta mapper/
-          default: false
-        includeConstant:
-          type: boolean
-          title: Incluir carpeta constant/
+          title: Incluir carpeta styles/
           default: false
 
   #############################################
@@ -80,50 +79,27 @@ spec:
   steps:
 
     - id: fetch-base
-      name: Copiando estructura base del proyecto
+      name: Copiando estructura base de React
       action: fetch:template
       input:
         url: ./skeleton
         values:
           appName: ${{ parameters.appName }}
-          owner: user:${{ user.entity.metadata.name }}
-          includeConfig: ${{ parameters.includeConfig }}
-          includeLogger: ${{ parameters.includeLogger }}
-          includeUtils: ${{ parameters.includeUtils }}
-          includeMapper: ${{ parameters.includeMapper }}
-          includeConstant: ${{ parameters.includeConstant }}
-          visibility: ${{ parameters.visibility }}
           description: ${{ parameters.description }}
-        
-    - id: remove-config
-      name: Eliminando carpeta config/
-      if: ${{ parameters.includeConfig == false }}
-      action: fs:delete
-      input:
-        files:
-          - ./src/main/java/es/renfe/${{ parameters.appName }}/config
+          owner: user:${{ user.entity.metadata.name }}
+          visibility: ${{ parameters.visibility }}
 
-    - id: remove-logger
-      name: Eliminando carpeta logger/
-      if: ${{ parameters.includeLogger == false }}
-      action: fs:delete
-      input:
-        files:
-          - ./src/main/java/es/renfe/${{ parameters.appName }}/logger
-
-    - id: remove-utils
-      name: Eliminando carpeta util/
-      if: ${{ parameters.includeUtils == false }}
-      action: fs:delete
-      input:
-        files:
-          - ./src/main/java/es/renfe/${{ parameters.appName }}/util
+          includeComponents: ${{ parameters.includeComponents }}
+          includeHooks: ${{ parameters.includeHooks }}
+          includeServices: ${{ parameters.includeServices }}
+          includeUtils: ${{ parameters.includeUtils }}
+          includeStyles: ${{ parameters.includeStyles }}
 
     - id: publish
       name: Publicando repositorio en GitHub
       action: publish:github
       input:
-        description: Proyecto Spring Boot Clean Architecture - ${{ parameters.appName }}
+        description: React Basic Template - ${{ parameters.appName }}
         repoUrl: github.com?owner=davyyelor&repo=${{ parameters.appName }}
         defaultBranch: 'main'
         repoVisibility: ${{ parameters.visibility }}
@@ -142,6 +118,7 @@ spec:
     links:
       - title: Repositorio creado
         url: ${{ steps['publish'].output.remoteUrl }}
+
       - title: Componente en Backstage
         icon: catalog
         entityRef: ${{ steps['register'].output.entityRef }}

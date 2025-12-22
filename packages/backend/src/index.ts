@@ -22,7 +22,7 @@ backend.add(
 
 // techdocs plugin
 backend.add(import('@backstage/plugin-techdocs-backend'));
-
+backend.add(import('@backstage-community/plugin-tech-radar-backend'));
 // auth plugin
 backend.add(import('@backstage/plugin-auth-backend'));
 backend.add(import('@backstage/plugin-auth-backend-module-github-provider'));
