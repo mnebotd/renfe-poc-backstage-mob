@@ -40,7 +40,7 @@ integrations:
     - host: github.com
       # This is a Personal Access Token or PAT from GitHub. You can find out how to generate this token, and more information
       # about setting up the GitHub integration here: https://backstage.io/docs/integrations/github/locations#configuration
-      token: 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
+      token: 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
     ### Example for how to add your GitHub Enterprise instance using the API:
     # - host: ghe.example.net
     #   apiBaseUrl: https://ghe.example.net/api/v3
@@ -50,6 +50,11 @@ integrations:
       apiBaseUrl: http://gitlab.com/api/v4
       # If the repo is private, add a token as well
       token: glpat-y5liTFjAM7Xu8VIaN_bFxW86MQp1OmoxZmU4Cw.01.120a996a0
+
+jenkins:
+  baseUrl: http://localhost:8080
+  username: delorza
+  apiKey: 11f1890b977f017c8162f3f98058530605
 
 proxy:
   ### Example for how to add a proxy endpoint for the frontend.
@@ -154,6 +159,13 @@ catalog:
       target: ../../examples/templates/react-basic-template/template.yaml
       rules:
         - allow: [Template]
+    
+    # Android mobile app template
+    - type: url
+      target: https://github.com/davyyelor/mobile-app-template/blob/main/template.yaml
+      rules:
+        - allow: [Template]
+
 
     # Organization
     - type: file
