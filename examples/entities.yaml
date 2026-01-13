@@ -115,3 +115,25 @@ metadata:
     - incidents
 spec:
   owner: group:team-flota
+
+---
+# ==========================================
+# Componente de prueba para integración Jenkins
+# ==========================================
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: prueba102-android
+  description: Componente de prueba para validar la integración de Backstage con Jenkins.
+  tags:
+    - android
+    - jenkins
+    - ci
+    - test
+  annotations:
+    jenkins.io/job-full-name: backstage/prueba104-android-build
+spec:
+  type: service
+  lifecycle: experimental
+  owner: group:developers
+  system: openshift

@@ -70,5 +70,7 @@ backend.add(
   import('@backstage-community/plugin-scaffolder-backend-module-jenkins'),
 );
 
+// Jenkins plugin for retrieving build data
+backend.add(import('@backstage-community/plugin-jenkins-backend'));
 
 backend.start();

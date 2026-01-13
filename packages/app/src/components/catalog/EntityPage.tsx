@@ -66,6 +66,8 @@ const techdocsContent = (
   </EntityTechdocsContent>
 );
 
+import { EntityJenkinsContent } from '@backstage-community/plugin-jenkins';
+
 const cicdContent = (
   // This is an example of how you can implement your company's logic in entity page.
   // You can for example enforce that all components of type 'service' should use GitHubActions
@@ -151,6 +153,10 @@ const serviceEntityPage = (
 
     <EntityLayout.Route path="/ci-cd" title="CI/CD">
       {cicdContent}
+    </EntityLayout.Route>
+
+    <EntityLayout.Route path="/jenkins" title="Jenkins">
+      <EntityJenkinsContent />
     </EntityLayout.Route>
 
     <EntityLayout.Route
