@@ -1,16 +1,59 @@
 pipeline {
-    agent any
+  agent any
 
-    stages {
-        stage('Checkout & Build') {
-            steps {
-                // Esto crea una carpeta corta para evitar el límite de 260 caracteres
-                ws("C:/jk/${env.JOB_NAME}") {
-                    checkout scm
-                    bat 'git config core.longpaths true'
-                    bat './gradlew build'
-                }
-            }
+  environment {
+    ANDROID_HOME     = 'C:\\Users\\delorzagabilondo\\AppData\\Local\\Android\\Sdk'
+    ANDROID_SDK_ROOT = 'C:\\Users\\delorzagabilondo\\AppData\\Local\\Android\\Sdk'
+    PATH = "${env.ANDROID_HOME}\\cmdline-tools\\latest\\bin;" +
+           "${env.ANDROID_HOME}\\platform-tools;" +
+           "${env.PATH}"
+  }
+
+  stages {
+
+    stage('Checkout') {
+      steps {
+        ws('C:/jk/pruebaBackstagejenkins') {
+          checkout scm
+          bat 'git config core.longpaths true'
         }
+      }
     }
+
+    stage('Configure Android SDK') {
+      steps {
+        ws('C:/jk/pruebaBackstagejenkins') {
+
+          // Crear local.properties SIN espacios finales (FIX DEFINITIVO)
+          bat '''
+          powershell -Command ^
+            "Set-Content -Path local.properties -Value 'sdk.dir=C:/Users/delorzagabilondo/AppData/Local/Android/Sdk' -NoNewline"
+          '''
+
+          // Verificación explícita (opcional pero recomendable)
+          bat 'type local.properties'
+        }
+      }
+    }
+
+    stage('Build') {
+      steps {
+        ws('C:/jk/pruebaBackstagejenkins') {
+          bat 'gradlew.bat assembleDebug'
+        }
+      }
+    }
+  }
+
+  post {
+    success {
+      echo 'Android build completed successfully'
+    }
+    failure {
+      echo 'Android build failed'
+    }
+  }
 }
+
+
+
