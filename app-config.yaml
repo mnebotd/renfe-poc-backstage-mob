@@ -151,6 +151,12 @@ catalog:
       rules:
         - allow: [Component, System, API, Resource, Location]
 
+    - type: file
+      target: ../../examples/catalog-info.yaml
+      rules:
+        - allow: [Component]
+        
+
     # PySpark template
     - type: file
       target: ../../examples/templates/pyspark-basic-etl/template.yaml
@@ -170,11 +176,16 @@ catalog:
         - allow: [Template]
     
     # Android mobile app template
-    - type: url
-      target: https://github.com/davyyelor/mobile-app-template/blob/main/template.yaml
+    #- type: url
+     # target: https://github.com/davyyelor/mobile-app-template/blob/main/template.yaml
+      #rules:
+       # - allow: [Template]
+
+    # Mobile app template
+    - type: file
+      target: ../../examples/templates/mobile-app-template/template.yaml
       rules:
         - allow: [Template]
-
 
     # Organization
     - type: file

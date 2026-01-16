@@ -1,0 +1,146 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: android-kotlin-mobile-app
+  title: Android Mobile App (Kotlin Standard)
+  description: Genera una aplicación Android en Kotlin siguiendo buenas prácticas (Clean Architecture, MVVM, módulos core/ui/data/domain, CI y tests).
+  tags:
+    - android
+    - kotlin
+    - mobile
+    - mvvm
+    - clean-architecture
+
+spec:
+  owner: user:davyyelor
+  type: service
+
+  #############################################
+  #  PARAMETERS visibles en el formulario GUI #
+  #############################################
+  parameters:
+    - title: Información general de la aplicación
+      required:
+        - appName
+        - packageName
+        - description
+      properties:
+        appName:
+          title: App Name
+          type: string
+          description: Nombre único de la aplicación Android
+          ui:autofocus: true
+
+        packageName:
+          title: Package Name
+          type: string
+          description: Package base (ej. com.company.myapp)
+          pattern: '^[a-zA-Z]+(\.[a-zA-Z][a-zA-Z0-9_]*)+$'
+
+        description:
+          title: Description
+          type: string
+          description: Breve descripción de la aplicación
+
+    - title: Configuración del repositorio
+      required:
+        - visibility
+      properties:
+        visibility:
+          title: Visibility
+          type: string
+          enum: [public, private]
+          default: private
+
+    - title: Opciones de arquitectura
+      properties:
+        includeTests:
+          type: boolean
+          title: Incluir tests (unitarios e instrumentados)
+          default: true
+
+        includeCI:
+          type: boolean
+          title: Incluir pipeline CI (GitHub Actions)
+          default: true
+
+        includeFlavors:
+          type: boolean
+          title: Incluir productFlavors (dev / pre / pro)
+          default: true
+
+  #############################################
+  #                  STEPS                    #
+  #############################################
+  steps:
+    - id: fetch-base
+      name: Generando proyecto base Android Kotlin
+      action: fetch:template
+      input:
+        url: ./skeleton
+        values:
+          appName: ${{ parameters.appName }}
+          packageName: ${{ parameters.packageName }}
+          description: ${{ parameters.description }}
+          owner: user:${{ user.entity.metadata.name }}
+          visibility: ${{ parameters.visibility }}
+
+          includeTests: ${{ parameters.includeTests }}
+          includeCI: ${{ parameters.includeCI }}
+          includeFlavors: ${{ parameters.includeFlavors }}
+
+    - id: publish
+      name: Publicando repositorio en GitHub
+      action: publish:github
+      input:
+        description: Android Kotlin App - ${{ parameters.appName }}
+        repoUrl: github.com?owner=davyyelor&repo=${{ parameters.appName }}
+        defaultBranch: main
+        repoVisibility: ${{ parameters.visibility }}
+        
+    - id: create-jenkins-job
+      name: Crear job Jenkins Android
+      action: jenkins:job:create
+      input:
+        serverUrl: http://localhost:8080
+        jobName: backstage/${{ parameters.appName }}-android-build
+        jobXml: |
+          <flow-definition plugin="workflow-job">
+            <description>Android Kotlin build pipeline</description>
+            <definition class="org.jenkinsci.plugins.workflow.cps.CpsScmFlowDefinition">
+              <scm class="hudson.plugins.git.GitSCM">
+                <configVersion>2</configVersion>
+                <userRemoteConfigs>
+                  <hudson.plugins.git.UserRemoteConfig>
+                    <url>${{ steps.publish.output.remoteUrl }}</url>
+                  </hudson.plugins.git.UserRemoteConfig>
+                </userRemoteConfigs>
+                <branches>
+                  <hudson.plugins.git.BranchSpec>
+                    <name>*/main</name>
+                  </hudson.plugins.git.BranchSpec>
+                </branches>
+              </scm>
+              <scriptPath>Jenkinsfile</scriptPath>
+            </definition>
+            <triggers/>
+          </flow-definition>
+
+    - id: register
+      name: Registrando componente en Backstage
+      action: catalog:register
+      input:
+        repoContentsUrl: ${{ steps.publish.output.repoContentsUrl }}
+        catalogInfoPath: /catalog-info.yaml
+
+
+  #############################################
+  #                  OUTPUTS                  #
+  #############################################
+  output:
+    links:
+      - title: Repositorio creado
+        url: ${{ steps.publish.output.remoteUrl }}
+      - title: Componente en Backstage
+        icon: catalog
+        entityRef: ${{ steps.register.output.entityRef }}

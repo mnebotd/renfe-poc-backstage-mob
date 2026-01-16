@@ -1,0 +1,29 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: appmovil5
+  title: appmovil5
+  description: aa
+  tags:
+    - android
+    - kotlin
+    - mobile
+
+  annotations:
+    github.com/project-slug: davyyelor/appmovil3
+    jenkins.io/job-full-name: backstage/prueba104-android-build
+
+  links:
+    - url: https://github.com/davyyelor/appmovil3
+      title: GitHub Repository
+      icon: github
+
+    - url: http://localhost:8080/job/backstage/job/prueba104-android-build/
+      title: Jenkins Build
+      icon: build
+
+spec:
+  type: mobile-app
+  lifecycle: experimental
+  owner: group:developers
+  system: openshift

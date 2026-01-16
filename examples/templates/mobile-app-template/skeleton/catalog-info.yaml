@@ -1,0 +1,29 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: ${{ values.appName | lower }}
+  title: ${{ values.appName }}
+  description: ${{ values.description }}
+  tags:
+    - android
+    - kotlin
+    - mobile
+
+  annotations:
+    github.com/project-slug: davyyelor/${{ values.appName }}
+    jenkins.io/job-full-name: backstage/${{ values.appName }}-android-build
+
+  links:
+    - url: https://github.com/davyyelor/${{ values.appName }}
+      title: GitHub Repository
+      icon: github
+
+    - url: http://localhost:8080/job/backstage/job/${{ values.appName }}-android-build/
+      title: Jenkins Build
+      icon: build
+
+spec:
+  type: service
+  lifecycle: experimental
+  owner: group:developers
+  system: openshift
