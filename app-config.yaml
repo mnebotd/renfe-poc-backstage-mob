@@ -54,7 +54,7 @@ integrations:
 jenkins:
   baseUrl: http://localhost:8080
   username: delorza
-  apiKey: 11f1890b977f017c8162f3f98058530605
+  apiKey: 11ab05b3e8d478360a5c605a221e28d989
 
 proxy:
   skipInvalidTargets: true

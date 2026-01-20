@@ -22,14 +22,25 @@ spec:
     - title: Información general de la aplicación
       required:
         - appName
+        - codigoApp
         - packageName
         - description
+        - sonarProjectKey
       properties:
         appName:
           title: App Name
           type: string
-          description: Nombre único de la aplicación Android
+          description: Nombre técnico único de la aplicación Android
           ui:autofocus: true
+
+        codigoApp:
+          title: Código de aplicación
+          type: string
+          description: Código identificador de la app (exactamente 3 caracteres)
+          minLength: 3
+          maxLength: 3
+          pattern: '^[A-Z0-9]{3}$'
+          ui:placeholder: ABC
 
         packageName:
           title: Package Name
@@ -42,6 +53,11 @@ spec:
           type: string
           description: Breve descripción de la aplicación
 
+        sonarProjectKey:
+          title: Sonar Project Key
+          type: string
+          description: Identificador del proyecto en SonarQube (ej. mobile:myapp)
+
     - title: Configuración del repositorio
       required:
         - visibility
@@ -52,22 +68,14 @@ spec:
           enum: [public, private]
           default: private
 
-    - title: Opciones de arquitectura
+    - title: Configuración de servicios externos
       properties:
-        includeTests:
-          type: boolean
-          title: Incluir tests (unitarios e instrumentados)
-          default: true
-
-        includeCI:
-          type: boolean
-          title: Incluir pipeline CI (GitHub Actions)
-          default: true
-
-        includeFlavors:
-          type: boolean
-          title: Incluir productFlavors (dev / pre / pro)
-          default: true
+        googleServiceJsonUrl:
+          title: URL google-services.json
+          type: string
+          description: URL segura desde la que descargar el fichero google-services.json
+          format: uri
+          ui:placeholder: https://...
 
   #############################################
   #                  STEPS                    #
@@ -80,14 +88,14 @@ spec:
         url: ./skeleton
         values:
           appName: ${{ parameters.appName }}
+          codigoApp: ${{ parameters.codigoApp }}
+          nombreApp: ${{ parameters.nombreApp }}
           packageName: ${{ parameters.packageName }}
           description: ${{ parameters.description }}
+          sonarProjectKey: ${{ parameters.sonarProjectKey }}
+          googleServiceJsonUrl: ${{ parameters.googleServiceJsonUrl }}
           owner: user:${{ user.entity.metadata.name }}
           visibility: ${{ parameters.visibility }}
-
-          includeTests: ${{ parameters.includeTests }}
-          includeCI: ${{ parameters.includeCI }}
-          includeFlavors: ${{ parameters.includeFlavors }}
 
     - id: publish
       name: Publicando repositorio en GitHub
@@ -103,7 +111,7 @@ spec:
       action: jenkins:job:create
       input:
         serverUrl: http://localhost:8080
-        jobName: backstage/${{ parameters.appName }}-android-build
+        jobName: backstage/${{ parameters.appName }}
         jobXml: |
           <flow-definition plugin="workflow-job">
             <description>Android Kotlin build pipeline</description>
@@ -126,6 +134,12 @@ spec:
             <triggers/>
           </flow-definition>
 
+    - id: build-jenkins-job    
+      name: Build job Jenkins Android
+      action: jenkins:job:build
+      input:
+        jobName: backstage/${{ parameters.appName }}
+
     - id: register
       name: Registrando componente en Backstage
       action: catalog:register
@@ -141,6 +155,9 @@ spec:
     links:
       - title: Repositorio creado
         url: ${{ steps.publish.output.remoteUrl }}
+      - title: Pipeline Jenkins
+        icon: build
+        url: http://localhost:8080/job/backstage/job/${{ parameters.appName }}/
       - title: Componente en Backstage
         icon: catalog
         entityRef: ${{ steps.register.output.entityRef }}

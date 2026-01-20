@@ -11,16 +11,16 @@ metadata:
 
   annotations:
     github.com/project-slug: davyyelor/${{ values.appName }}
-    jenkins.io/job-full-name: backstage/${{ values.appName }}-android-build
+    jenkins.io/job-full-name: backstage/${{ values.appName }}
 
   links:
     - url: https://github.com/davyyelor/${{ values.appName }}
       title: GitHub Repository
       icon: github
 
-    - url: http://localhost:8080/job/backstage/job/${{ values.appName }}-android-build/
+    - url: http://localhost:8080/job/backstage/job/${{ values.appName }}/
       title: Jenkins Build
-      icon: build
+      icon: jenkins
 
 spec:
   type: service
