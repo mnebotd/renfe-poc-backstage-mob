@@ -13,34 +13,27 @@ pipeline {
 
     stage('Checkout') {
       steps {
-        ws('C:/jk/pruebaBackstagejenkins') {
-          checkout scm
-          bat 'git config core.longpaths true'
-        }
+        bat 'git config core.longpaths true'
+        checkout scm
       }
     }
 
     stage('Configure Android SDK') {
       steps {
-        ws('C:/jk/pruebaBackstagejenkins') {
+        // Crear local.properties SIN espacios finales (FIX DEFINITIVO)
+        bat '''
+        powershell -Command ^
+          "Set-Content -Path local.properties -Value 'sdk.dir=C:/Users/delorzagabilondo/AppData/Local/Android/Sdk' -NoNewline"
+        '''
 
-          // Crear local.properties SIN espacios finales (FIX DEFINITIVO)
-          bat '''
-          powershell -Command ^
-            "Set-Content -Path local.properties -Value 'sdk.dir=C:/Users/delorzagabilondo/AppData/Local/Android/Sdk' -NoNewline"
-          '''
-
-          // Verificación explícita (opcional pero recomendable)
-          bat 'type local.properties'
-        }
+        // Verificación explícita (opcional pero recomendable)
+        bat 'type local.properties'
       }
     }
 
     stage('Build') {
       steps {
-        ws('C:/jk/pruebaBackstagejenkins') {
-          bat 'gradlew.bat assembleDebug'
-        }
+        bat 'gradlew.bat assembleDebug'
       }
     }
   }
@@ -54,6 +47,3 @@ pipeline {
     }
   }
 }
-
-
-
