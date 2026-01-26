@@ -10,11 +10,11 @@ metadata:
     - mobile
 
   annotations:
-    github.com/project-slug: davyyelor/${{ values.appName }}
+    github.com/project-slug: davyyelor/${{ parameters.codigoApp }}-app-movil
     jenkins.io/job-full-name: backstage/${{ values.appName }}
 
   links:
-    - url: https://github.com/davyyelor/${{ values.appName }}
+    - url: https://github.com/davyyelor/${{ parameters.codigoApp }}-app-movil
       title: GitHub Repository
       icon: github
 
@@ -25,5 +25,8 @@ metadata:
 spec:
   type: service
   lifecycle: experimental
-  owner: group:developers
+  owner: group:aplicaciones-moviles
   system: openshift
+
+  dependsOn:
+    - resource:default/postgres

@@ -151,12 +151,6 @@ catalog:
       rules:
         - allow: [Component, System, API, Resource, Location]
 
-    - type: file
-      target: ../../examples/catalog-info.yaml
-      rules:
-        - allow: [Component]
-        
-
     # PySpark template
     - type: file
       target: ../../examples/templates/pyspark-basic-etl/template.yaml

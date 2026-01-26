@@ -89,7 +89,6 @@ spec:
         values:
           appName: ${{ parameters.appName }}
           codigoApp: ${{ parameters.codigoApp }}
-          nombreApp: ${{ parameters.nombreApp }}
           packageName: ${{ parameters.packageName }}
           description: ${{ parameters.description }}
           sonarProjectKey: ${{ parameters.sonarProjectKey }}
@@ -102,7 +101,7 @@ spec:
       action: publish:github
       input:
         description: Android Kotlin App - ${{ parameters.appName }}
-        repoUrl: github.com?owner=davyyelor&repo=${{ parameters.appName }}
+        repoUrl: github.com?owner=davyyelor&repo=${{ parameters.codigoApp }}-app-movil
         defaultBranch: main
         repoVisibility: ${{ parameters.visibility }}
         

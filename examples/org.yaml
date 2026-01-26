@@ -1,95 +1,314 @@
 ###########################################################
-# Grupos generales
+# Grupos Azure / Plataforma
 ###########################################################
+
 apiVersion: backstage.io/v1alpha1
 kind: Group
 metadata:
-  name: Developers
-  description: Equipo general de desarrolladores
-spec:
-  type: team
-  children: []
-
----
-apiVersion: backstage.io/v1alpha1
-kind: Group
-metadata:
-  name: Infrastructure
-  description: Equipo encargado de infraestructura y plataforma
-spec:
-  type: team
-  children: []
-
-
-###########################################################
-# Grupos por System
-###########################################################
-
----
-apiVersion: backstage.io/v1alpha1
-kind: Group
-metadata:
-  name: team-analitica
-  description: Equipo responsable de analítica y reporting
+  name: azure-infra
+  description: Equipo responsable de la infraestructura Azure
 spec:
   type: team
   profile:
-    displayName: Equipo de Analítica y Reporting
+    displayName: Azure Infrastructure
   children: []
-
 ---
 apiVersion: backstage.io/v1alpha1
 kind: Group
 metadata:
-  name: team-identidad
-  description: Equipo responsable de autenticación, autorización e identidad
+  name: sistemas
+  description: Equipo responsable de sistemas y plataformas
 spec:
   type: team
   profile:
-    displayName: Equipo de Identidad y Gestión de Accesos
+    displayName: Sistemas
   children: []
-
 ---
 apiVersion: backstage.io/v1alpha1
 kind: Group
 metadata:
-  name: team-ticketing
-  description: Equipo encargado del ticketing, pricing y pagos
+  name: aplicaciones-moviles
+  description: Equipo responsable de aplicaciones móviles
 spec:
   type: team
   profile:
-    displayName: Equipo de Ticketing
+    displayName: Aplicaciones Móviles
   children: []
-
 ---
 apiVersion: backstage.io/v1alpha1
 kind: Group
 metadata:
-  name: team-movilidad
-  description: Equipo encargado de rutas, movilidad, geolocalización y planificación
+  name: azure-powerbi
+  description: Equipo responsable de Power BI y reporting
 spec:
   type: team
   profile:
-    displayName: Equipo de Movilidad y Rutas
+    displayName: Azure PowerBI
   children: []
-
 ---
 apiVersion: backstage.io/v1alpha1
 kind: Group
 metadata:
-  name: team-flota
-  description: Equipo de gestión de flota, mantenimiento, incidencias y posición en tiempo real
+  name: azure-datafactory
+  description: Equipo responsable de Azure Data Factory y pipelines
 spec:
   type: team
   profile:
-    displayName: Equipo de Gestión de Flota
+    displayName: Azure Data Factory
   children: []
 
 ###########################################################
-# Usuarios actuales
+# Grupos por Unidad
 ###########################################################
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: unidad-epe
+spec:
+  type: team
+  profile:
+    displayName: EPE
+  children: []
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: unidad-integria
+spec:
+  type: team
+  profile:
+    displayName: INTEGRIA
+  children: []
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: unidad-mercancias
+spec:
+  type: team
+  profile:
+    displayName: MERCANCÍAS
+  children: []
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: unidad-viajeros
+spec:
+  type: team
+  profile:
+    displayName: VIAJEROS
+  children: []
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: unidad-general
+spec:
+  type: team
+  profile:
+    displayName: General
+  children: []
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: unidad-venta
+spec:
+  type: team
+  profile:
+    displayName: Venta
+  children: []
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: unidad-operacion
+spec:
+  type: team
+  profile:
+    displayName: Operación
+  children: []
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: unidad-rrhh
+spec:
+  type: team
+  profile:
+    displayName: RRHH
+  children: []
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: unidad-seguridad-circulacion
+spec:
+  type: team
+  profile:
+    displayName: Seguridad Circulación
+  children: []
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: unidad-comunicacion-interna
+spec:
+  type: team
+  profile:
+    displayName: Comunicación Interna
+  children: []
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: unidad-dtdyt
+spec:
+  type: team
+  profile:
+    displayName: DTDyT
+  children: []
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: unidad-financiera
+spec:
+  type: team
+  profile:
+    displayName: Financiera
+  children: []
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: unidad-otras
+spec:
+  type: team
+  profile:
+    displayName: OTRAS
+  children: []
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: unidad-logitrail
+spec:
+  type: team
+  profile:
+    displayName: LOGITRAIL
+  children: []
+
+###########################################################
+# Usuarios
+###########################################################
+---
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: adrian-sierra
+spec:
+  profile:
+    displayName: Adrián Sierra
+    email: adrian.sierra@company.com
+  memberOf:
+    - aplicaciones-moviles
+---
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: victor-uriarte
+spec:
+  profile:
+    displayName: Víctor Uriarte
+    email: victor.uriarte@company.com
+  memberOf:
+    - aplicaciones-moviles
+---
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: angel-jara
+spec:
+  profile:
+    displayName: Ángel Jara
+    email: angel.jara@company.com
+  memberOf:
+    - sistemas
+---
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: irene-del-mar
+spec:
+  profile:
+    displayName: Irene del Mar
+    email: irene.delmar@company.com
+  memberOf:
+    - azure-infra
 
 ---
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: carlos-martin
+spec:
+  profile:
+    displayName: Carlos Martín
+    email: carlos.martin@company.com
+  memberOf:
+    - azure-infra
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: laura-gomez
+spec:
+  profile:
+    displayName: Laura Gómez
+    email: laura.gomez@company.com
+  memberOf:
+    - azure-infra
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: javier-ruiz
+spec:
+  profile:
+    displayName: Javier Ruiz
+    email: javier.ruiz@company.com
+  memberOf:
+    - azure-infra
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: marta-sanchez
+spec:
+  profile:
+    displayName: Marta Sánchez
+    email: marta.sanchez@company.com
+  memberOf:
+    - azure-powerbi
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: pablo-lopez
+spec:
+  profile:
+    displayName: Pablo López
+    email: pablo.lopez@company.com
+  memberOf:
+    - azure-datafactory
+
 ---
 # https://backstage.io/docs/features/software-catalog/descriptor-format#kind-user
 apiVersion: backstage.io/v1alpha1
@@ -97,7 +316,7 @@ kind: User
 metadata:
   name: davyyelor
 spec:
-  memberOf: [Developers]
+  memberOf: [sistemas]
 ---
 # https://backstage.io/docs/features/software-catalog/descriptor-format#kind-group
 apiVersion: backstage.io/v1alpha1
@@ -111,5 +330,132 @@ spec:
     displayName: David Elorza
     email: davidelorzag@gmail.com
   memberOf:
-    - Developers
-    - Infrastructure
+    - sistemas
+---
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: roberto-garcia
+spec:
+  profile:
+    displayName: Roberto García
+    email: roberto.garcia@company.com
+  memberOf:
+    - sistemas
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: elena-munoz
+spec:
+  profile:
+    displayName: Elena Muñoz
+    email: elena.munoz@company.com
+  memberOf:
+    - sistemas
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: miguel-santos
+spec:
+  profile:
+    displayName: Miguel Santos
+    email: miguel.santos@company.com
+  memberOf:
+    - sistemas
+---
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: lucia-fernandez
+spec:
+  profile:
+    displayName: Lucía Fernández
+    email: lucia.fernandez@company.com
+  memberOf:
+    - aplicaciones-moviles
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: sergio-navarro
+spec:
+  profile:
+    displayName: Sergio Navarro
+    email: sergio.navarro@company.com
+  memberOf:
+    - aplicaciones-moviles
+---
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: natalia-romero
+spec:
+  profile:
+    displayName: Natalia Romero
+    email: natalia.romero@company.com
+  memberOf:
+    - azure-datafactory
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: diego-alonso
+spec:
+  profile:
+    displayName: Diego Alonso
+    email: diego.alonso@company.com
+  memberOf:
+    - azure-datafactory
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: alberto-rueda
+spec:
+  profile:
+    displayName: Alberto Rueda
+    email: alberto.rueda@company.com
+  memberOf:
+    - azure-datafactory
+---
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: natalia-romero
+spec:
+  profile:
+    displayName: Natalia Romero
+    email: natalia.romero@company.com
+  memberOf:
+    - azure-datafactory
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: diego-alonso
+spec:
+  profile:
+    displayName: Diego Alonso
+    email: diego.alonso@company.com
+  memberOf:
+    - azure-datafactory
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: alberto-rueda
+spec:
+  profile:
+    displayName: Alberto Rueda
+    email: alberto.rueda@company.com
+  memberOf:
+    - azure-datafactory
