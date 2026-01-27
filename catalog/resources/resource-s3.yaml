@@ -1,0 +1,9 @@
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: s3
+  title: S3
+spec:
+  type: object-storage
+  lifecycle: production
+  owner: tsistemas

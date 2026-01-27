@@ -1,0 +1,16 @@
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: api-login
+  title: API Login
+spec:
+  type: openapi
+  lifecycle: production
+  owner: sistemas
+  definition: |
+    openapi: 3.0.0
+    info:
+      title: API Login
+      version: 1.0.0
+    paths: {}
+

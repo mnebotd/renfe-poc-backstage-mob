@@ -1,0 +1,12 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: app-movil-ios-cercanias
+  title: App Móvil iOS Cercanías
+spec:
+  type: service
+  lifecycle: production
+  owner: aplicaciones-moviles
+  consumesApis:
+    - api-login
+    - api-cercanias

@@ -1,0 +1,15 @@
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: api-cercanias
+  title: API Cercanías
+spec:
+  type: openapi
+  lifecycle: production
+  owner: sistemas
+  definition: |
+    openapi: 3.0.0
+    info:
+      title: API Cercanías
+      version: 1.0.0
+    paths: {}

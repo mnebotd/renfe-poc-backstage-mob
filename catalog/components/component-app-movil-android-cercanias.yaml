@@ -1,0 +1,15 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: app-movil-android-cercanias
+  title: App Móvil Android Cercanías
+spec:
+  type: service
+  lifecycle: production
+  owner: aplicaciones-moviles
+  dependsOn:
+    - component:lib-movil-android1
+    - resource:s3
+  consumesApis:
+    - api-login
+    - api-cercanias

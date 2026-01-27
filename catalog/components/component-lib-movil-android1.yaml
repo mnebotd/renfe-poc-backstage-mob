@@ -1,0 +1,9 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: lib-movil-android1
+  title: LibMovilAndroid1
+spec:
+  type: library
+  lifecycle: production
+  owner: aplicaciones-moviles

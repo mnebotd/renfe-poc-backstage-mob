@@ -46,45 +46,6 @@ spec:
 
 ---
 # ==========================================
-# Base de datos PostgreSQL en OpenShift
-# ==========================================
-apiVersion: backstage.io/v1alpha1
-kind: Resource
-metadata:
-  name: postgres
-  description: Base de datos PostgreSQL desplegada en OpenShift.
-  tags:
-    - postgresql
-    - database
-    - openshift
-spec:
-  type: database
-  owner: group:infrastructure
-  system: openshift
-  lifecycle: production
-
----
-# ==========================================
-# Cola de mensajes AWS SQS para procesamiento de pagos
-# ==========================================
-apiVersion: backstage.io/v1alpha1
-kind: Resource
-metadata:
-  name: aws-sqs-payments
-  description: Cola SQS utilizada para procesar eventos y transacciones del sistema de ticketing y pagos.
-  tags:
-    - aws
-    - sqs
-    - queue
-    - messaging
-spec:
-  type: queue
-  owner: group:team-ticketing
-  system: sistema-ticketing
-  lifecycle: production
-
----
-# ==========================================
 # Sistema de Movilidad y Rutas
 # ==========================================
 apiVersion: backstage.io/v1alpha1

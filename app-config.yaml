@@ -142,15 +142,14 @@ catalog:
     pullRequestBranchName: backstage-integration
 
   rules:
-    - allow: [Component, System, API, Resource, Location, Template]
+    - allow: [Component, System, API, Resource, Location, Template, Domain]
 
   locations:
     # Entities
     - type: file
       target: ../../examples/entities.yaml
       rules:
-        - allow: [Component, System, API, Resource, Location]
-
+        - allow: [Component, System, API, Resource, Location, Domain]
     # PySpark template
     - type: file
       target: ../../examples/templates/pyspark-basic-etl/template.yaml
@@ -186,6 +185,61 @@ catalog:
       target: ../../examples/org.yaml
       rules:
         - allow: [User, Group]
+    
+    # Domain
+    - type: file
+      target: ../../catalog/domains/domain-cercanias.yaml
+      rules:
+        - allow: [Domain]
+
+    - type: file
+      target: ../../catalog/domains/domain-informacion-al-viajero.yaml
+      rules:
+        - allow: [Domain]
+
+    - type: file
+      target: ../../catalog/domains/domain-viajeros.yaml
+      rules:
+        - allow: [Domain]
+
+    # RESOURCE
+    - type: file
+      target: ../../catalog/resources/resource-bd.yaml
+      rules:
+        - allow: [Resource]
+
+    - type: file
+      target: ../../catalog/resources/resource-s3.yaml
+      rules:
+        - allow: [Resource]
+
+    # API
+    - type: file
+      target: ../../catalog/apis/api-cercanias.yaml
+      rules:
+        - allow: [API]
+      
+    - type: file
+      target: ../../catalog/apis/api-login.yaml
+      rules:
+        - allow: [API]
+
+    # Componente
+    - type: file
+      target: ../../catalog/components/component-app-movil-android-cercanias.yaml
+      rules:
+        - allow: [Component]
+    
+    - type: file
+      target: ../../catalog/components/component-app-movil-ios-cercanias.yaml
+      rules:
+        - allow: [Component]
+      
+    - type: file
+      target: ../../catalog/components/component-lib-movil-android1.yaml
+      rules:
+        - allow: [Component]
+
 
 
 

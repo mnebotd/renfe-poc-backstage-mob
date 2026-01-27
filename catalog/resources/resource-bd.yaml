@@ -1,0 +1,9 @@
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: bd
+  title: BD
+spec:
+  type: database
+  lifecycle: production
+  owner: sistemas
