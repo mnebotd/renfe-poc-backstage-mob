@@ -19,6 +19,7 @@ import com.core.presentation.ui.theme.palette.semantic.darkSemanticContentPalett
 import com.core.presentation.ui.theme.palette.semantic.lightSemanticBackgroundPalette
 import com.core.presentation.ui.theme.palette.semantic.lightSemanticBorderPalette
 import com.core.presentation.ui.theme.palette.semantic.lightSemanticContentPalette
+import com.core.presentation.ui.utils.isSystemDarkMode
 
 open class ColorsPalette(
     open val backgroundPalette: BackgroundPalette,
@@ -27,7 +28,15 @@ open class ColorsPalette(
     open val semanticBackgroundPalette: SemanticBackgroundPalette,
     open val semanticBorderPalette: SemanticBorderPalette,
     open val semanticContentPalette: SemanticContentPalette,
-)
+) {
+    companion object {
+        operator fun invoke() = if (isSystemDarkMode()) {
+            DarkColorsPalette()
+        } else {
+            LightColorsPalette()
+        }
+    }
+}
 
 @Immutable
 data class LightColorsPalette(

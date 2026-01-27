@@ -69,7 +69,7 @@ class FileManagerImpl(
                 fileName = fileName,
                 uri = FileProvider.getUriForFile(
                     context,
-                    context.packageName,
+                    "${context.packageName}.fileprovider",
                     file,
                 ),
                 mimeType = mimeType,
@@ -142,7 +142,7 @@ class FileManagerImpl(
                 fileName = fileName,
                 uri = FileProvider.getUriForFile(
                     context,
-                    context.packageName,
+                    "${context.packageName}.fileprovider",
                     outputFile,
                 ),
                 mimeType = mimeType,

@@ -4,6 +4,7 @@ import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.TextUnitType
 
 data class SpDimensions(
+    val sp4: TextUnit = TextUnit(value = 4f, type = TextUnitType.Sp),
     val sp12: TextUnit = TextUnit(value = 12f, type = TextUnitType.Sp),
     val sp14: TextUnit = TextUnit(value = 14f, type = TextUnitType.Sp),
     val sp16: TextUnit = TextUnit(value = 16f, type = TextUnitType.Sp),
