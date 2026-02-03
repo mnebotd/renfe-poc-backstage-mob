@@ -26,7 +26,26 @@ spec:
   type: service
   lifecycle: experimental
   owner: group:aplicaciones-moviles
-  system: openshift
 
+  {% if values.consumesApis and values.consumesApis | length > 0 %}
+  consumesApis:
+  {% for api in values.consumesApis %}
+    - ${{ api }}
+  {% endfor %}
+  {% endif %}
+
+  {% if values.providesApis and values.providesApis | length > 0 %}
+  providesApis:
+  {% for api in values.providesApis %}
+    - ${{ api }}
+  {% endfor %}
+  {% endif %}
+
+  {% if values.dependsOn and values.dependsOn | length > 0 %}
   dependsOn:
-    - resource:default/postgres
+  {% for resource in values.dependsOn %}
+    - ${{ resource }}
+  {% endfor %}
+  {% endif %}
+
+

@@ -77,6 +77,45 @@ spec:
           format: uri
           ui:placeholder: https://...
 
+    - title: Relaciones con el ecosistema Backstage
+      properties:
+
+        consumesApis:
+          title: APIs que consume
+          type: array
+          description: Selecciona las APIs existentes que esta app consume
+          items:
+            type: string
+            ui:field: EntityPicker
+            ui:options:
+              catalogFilter:
+                kind: API
+          uniqueItems: true
+
+        providesApis:
+          title: APIs que provee
+          type: array
+          description: Selecciona las APIs que esta app expone
+          items:
+            type: string
+            ui:field: EntityPicker
+            ui:options:
+              catalogFilter:
+                kind: API
+          uniqueItems: true
+
+        dependsOn:
+          title: Recursos de los que depende
+          type: array
+          description: Selecciona recursos existentes (BDs, colas, etc.)
+          items:
+            type: string
+            ui:field: EntityPicker
+            ui:options:
+              catalogFilter:
+                kind: Resource
+          uniqueItems: true
+
   #############################################
   #                  STEPS                    #
   #############################################
@@ -95,6 +134,11 @@ spec:
           googleServiceJsonUrl: ${{ parameters.googleServiceJsonUrl }}
           owner: user:${{ user.entity.metadata.name }}
           visibility: ${{ parameters.visibility }}
+
+          consumesApis: ${{ parameters.consumesApis }}
+          providesApis: ${{ parameters.providesApis }}
+          dependsOn: ${{ parameters.dependsOn }}
+
 
     - id: publish
       name: Publicando repositorio en GitHub
