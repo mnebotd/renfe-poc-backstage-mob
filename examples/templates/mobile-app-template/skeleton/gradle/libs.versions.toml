@@ -1,0 +1,7 @@
+[versions]
+sonarqube-plugin = "7.0.1.6134"
+
+[libraries]
+
+[plugins]
+sonarqube = { id = "org.sonarqube", version.ref = "sonarqube-plugin" }

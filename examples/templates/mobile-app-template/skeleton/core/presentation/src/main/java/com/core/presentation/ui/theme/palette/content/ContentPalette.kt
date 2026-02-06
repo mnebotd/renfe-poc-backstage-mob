@@ -2,6 +2,7 @@ package com.core.presentation.ui.theme.palette.content
 
 import androidx.compose.ui.graphics.Color
 import com.core.presentation.ui.theme.colors.gray.GrayColors
+import com.core.presentation.ui.theme.colors.purple.PurpleColors
 import com.core.presentation.ui.theme.colors.turquoise.TurquoiseColors
 import com.core.presentation.ui.theme.colors.yellow.YellowColors
 
@@ -21,7 +22,7 @@ val lightContentPalette = ContentPalette(
     high = GrayColors.gray100,
     mid = GrayColors.gray80,
     low = GrayColors.gray60,
-    accent = TurquoiseColors.turquoise70,
+    accent = PurpleColors.purple70,
     contrast = YellowColors.yellow70,
     inverse = Color.White,
     alwaysLight = Color.White,
@@ -33,7 +34,7 @@ val darkContentPalette = ContentPalette(
     high = Color.White,
     mid = GrayColors.gray20,
     low = GrayColors.gray30,
-    accent = TurquoiseColors.turquoise60,
+    accent = PurpleColors.purple70,
     contrast = YellowColors.yellow50,
     inverse = GrayColors.gray100,
     alwaysLight = Color.White,

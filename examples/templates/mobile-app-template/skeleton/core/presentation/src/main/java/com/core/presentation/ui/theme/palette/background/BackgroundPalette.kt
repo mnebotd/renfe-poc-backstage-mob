@@ -2,6 +2,7 @@ package com.core.presentation.ui.theme.palette.background
 
 import androidx.compose.ui.graphics.Color
 import com.core.presentation.ui.theme.colors.gray.GrayColors
+import com.core.presentation.ui.theme.colors.purple.PurpleColors
 import com.core.presentation.ui.theme.colors.turquoise.TurquoiseColors
 import com.core.presentation.ui.theme.colors.yellow.YellowColors
 
@@ -24,9 +25,9 @@ val lightBackgroundPalette = BackgroundPalette(
     base = Color.White,
     secondary = GrayColors.gray10,
     tertiary = GrayColors.gray20,
-    accent = TurquoiseColors.turquoise70,
-    accentLow = TurquoiseColors.turquoise10,
-    contrast = YellowColors.yellow70,
+    accent = PurpleColors.purple70,
+    accentLow = PurpleColors.purple10,
+    contrast = YellowColors.yellow100,
     contrastLow = YellowColors.yellow10,
     inverse = GrayColors.gray100,
     alwaysLight = Color.White,
@@ -44,8 +45,8 @@ val darkBackgroundPalette = BackgroundPalette(
     base = GrayColors.gray100,
     secondary = GrayColors.gray90,
     tertiary = GrayColors.gray80,
-    accent = TurquoiseColors.turquoise70,
-    accentLow = TurquoiseColors.turquoise100,
+    accent = PurpleColors.purple70,
+    accentLow = PurpleColors.purple100,
     contrast = YellowColors.yellow70,
     contrastLow = YellowColors.yellow90,
     inverse = Color.White,

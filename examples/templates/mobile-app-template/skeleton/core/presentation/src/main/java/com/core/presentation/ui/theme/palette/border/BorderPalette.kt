@@ -2,6 +2,7 @@ package com.core.presentation.ui.theme.palette.border
 
 import androidx.compose.ui.graphics.Color
 import com.core.presentation.ui.theme.colors.gray.GrayColors
+import com.core.presentation.ui.theme.colors.purple.PurpleColors
 import com.core.presentation.ui.theme.colors.turquoise.TurquoiseColors
 
 data class BorderPalette(
@@ -19,7 +20,7 @@ val lightBorderPalette = BorderPalette(
     high = GrayColors.gray100,
     mid = GrayColors.gray40,
     low = GrayColors.gray20,
-    accent = TurquoiseColors.turquoise70,
+    accent = PurpleColors.purple70,
     inverse = Color.White,
     alwaysLight = Color.White,
     alwaysDark = GrayColors.gray100,
@@ -30,7 +31,7 @@ val darkBorderPalette = BorderPalette(
     high = Color.White,
     mid = GrayColors.gray60,
     low = GrayColors.gray80,
-    accent = TurquoiseColors.turquoise70,
+    accent = PurpleColors.purple70,
     inverse = GrayColors.gray100,
     alwaysLight = Color.White,
     alwaysDark = GrayColors.gray100,

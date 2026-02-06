@@ -13,6 +13,8 @@ pluginManagement {
         }
         mavenCentral()
         gradlePluginPortal()
+
+        maven(url = "https://artifactory.sir.renfe.es/artifactory/m2-renfe/")
     }
 }
 
@@ -21,6 +23,8 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+
+        maven(url = "https://artifactory.sir.renfe.es/artifactory/m2-renfe/")
     }
 
     versionCatalogs {
