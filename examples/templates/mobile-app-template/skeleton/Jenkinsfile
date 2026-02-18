@@ -23,7 +23,7 @@ pipeline {
         // Crear local.properties SIN espacios finales (FIX DEFINITIVO)
         bat '''
         powershell -Command ^
-          "Set-Content -Path local.properties -Value 'sdk.dir=C:/Users/delorzagabilondo/AppData/Local/Android/Sdk' -NoNewline"
+          "Set-Content -Path local.properties -Value 'sdk.dir=C:/Users/mnebot/AppData/Local/Android/Sdk' -NoNewline"
         '''
 
         // Verificación explícita (opcional pero recomendable)
